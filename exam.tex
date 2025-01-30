@@ -1,0 +1,112 @@
+% !TeX encoding = UTF-8
+\documentclass[german]{mni-thm-exam}
+
+\logo[height=64pt]{mni-thm-logo.pdf}
+\title{Exam}
+\subject{Subject Name (Code)}
+\semester{WS24/25}
+\examiner{Examinus Smith}
+\coExaminer{Prof. Dr. Joe White}
+\date{\today}
+\degreeProgram{} % Leave blank if students have to enter
+\notice{
+\ifthenelse{\equal{\examLanguage}{german}}
+{Schreiben Sie Ihre Antworten nur auf den bereitgestellten Klausurblättern!}
+{Write your answers only on the provided exam sheets!}
+} % Leave blank if no notices exist
+
+\begin{document}
+
+\TitlePage
+
+\topic{Thema}
+
+\task[7][3]{Aufgabenbeschreibung}
+
+\task[8][2]{Aufgabenbeschreibung}
+
+\topic{Thema}
+
+\task[7][5]{Aufgabenbeschreibung}
+
+\task[8][6]{Aufgabenbeschreibung}
+
+\topic{Thema}
+
+\task[12][3]{Aufgabenbeschreibung}
+
+\begin{lstlisting}[caption={Express -- Application Code A.}, label={lst:exprA}, language=JS]
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+\end{lstlisting}
+
+\task[11][3]{Aufgabenbeschreibung}
+
+\begin{lstlisting}[caption={Express -- Application Code B.}, label={lst:exprB}, language=TS]
+import express, { Express, Request, Response } from "express";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const app: Express = express();
+const port = process.env.PORT || 3000;
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Express + TypeScript Server");
+});
+
+app.listen(port, () => {
+  console.log(`[server]: Server is running at http://localhost:${port}`);
+});
+\end{lstlisting}
+
+\task[13][3]{Aufgabenbeschreibung}
+
+\begin{lstlisting}[caption={HTML -- Application Code C.}, label={lst:exprC}, language=HTML]
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Heading</h1>
+
+<p>My first paragraph.</p>
+
+</body>
+</html>
+\end{lstlisting}
+
+
+\task[12][3]{Aufgabenbeschreibung}
+
+\begin{lstlisting}[caption={CSS -- Application Code D.}, label={lst:exprD}, language=CSS]
+body {
+  background-color: powderblue;
+}
+h1 {
+  color: blue;
+}
+p {
+  color: red;
+}
+\end{lstlisting}
+
+\newpage
+
+\foreach \x in {A, B} {
+\begin{center}
+\textbf{\ifthenelse{\equal{\examLanguage}{german}}{Zusatzblatt}
+{Supplementary Sheet} \x}
+\end{center}
+\writingSpace{19}
+}
+
+\end{document}

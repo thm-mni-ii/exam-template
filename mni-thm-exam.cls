@@ -30,6 +30,29 @@
 \RequirePackage{fontawesome}
 \RequirePackage{forloop}
 
+\RequirePackage{etoolbox}
+\providetoggle{showSolution}
+\settoggle{showSolution}{false}
+
+\RequirePackage{tcolorbox}
+\newtcolorbox{solutionBox}{
+colframe=DarkGreen,        % Schwarzer Rahmen
+colback=white,         % Weißer Hintergrund
+coltitle=white,        % Schwarze Titel-Farbe
+fonttitle=\bfseries,   % Titel fett
+title=Solution,          % Titel der Box
+sharp corners,         % Eckige Kanten
+}
+
+\NewEnviron{solution}{
+\iftoggle{showSolution}{
+\begin{solutionBox}
+\BODY
+\end{solutionBox}
+}{}
+}
+
+
 \RequirePackage{pgffor}
 \def\Step{0.5cm}
 \def\MyDot{\scalebox{1}{\color{lightgray}.}}
@@ -43,8 +66,10 @@
 }
 \newcounter{loopCounter}
 \newcommand{\writingSpace}[1]{%
+\iftoggle{showSolution}{}{
 \forloop{loopCounter}{0}{\value{loopCounter}<#1}{\DotPattern}
 \setcounter{loopCounter}{0}
+}
 }
 \RequirePackage{listings}
 
@@ -104,7 +129,7 @@
 	\centering
 	\@logo
 	\vfill
-	{\large \@title} \\
+	{\large \@title\iftoggle{showSolution}{ \color{DarkGreen}Solution}{}} \\
 	\vspace{1cm}
 	{\Large \@subject}
 	\vfill
